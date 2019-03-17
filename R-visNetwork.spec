@@ -4,22 +4,24 @@
 #
 Name     : R-visNetwork
 Version  : 2.0.5
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/visNetwork_2.0.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/visNetwork_2.0.5.tar.gz
 Summary  : Network Visualization using 'vis.js' Library
 Group    : Development/Tools
 License  : Apache-2.0 MIT
-Requires: R-htmltools
-Requires: R-htmlwidgets
-Requires: R-jsonlite
 BuildRequires : R-htmltools
 BuildRequires : R-htmlwidgets
 BuildRequires : R-jsonlite
 BuildRequires : buildreq-R
 
 %description
-library. It allows an interactive visualization of networks.
+canvas-toBlob.js
+================
+canvas-toBlob.js implements the standard HTML5 [`canvas.toBlob()`][1] and
+`canvas.toBlobHD()` methods in browsers that do not natively support it. canvas-toBlob.js
+requires `Blob` support to function, which is not present in all browsers. [Blob.js][2]
+is a cross-browser `Blob` implementation that solves this.
 
 %prep
 %setup -q -c -n visNetwork
@@ -29,10 +31,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544226880
+export SOURCE_DATE_EPOCH=1552838321
 
 %install
-export SOURCE_DATE_EPOCH=1544226880
+export SOURCE_DATE_EPOCH=1552838321
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -68,8 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library visNetwork|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  visNetwork || :
 
 
 %files
