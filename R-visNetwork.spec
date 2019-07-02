@@ -4,27 +4,24 @@
 #
 Name     : R-visNetwork
 Version  : 2.0.7
-Release  : 22
+Release  : 23
 URL      : https://cran.r-project.org/src/contrib/visNetwork_2.0.7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/visNetwork_2.0.7.tar.gz
 Summary  : Network Visualization using 'vis.js' Library
 Group    : Development/Tools
 License  : Apache-2.0 MIT
-Requires: R-evaluate
+Requires: R-htmltools
 Requires: R-htmlwidgets
-Requires: R-webshot
-BuildRequires : R-evaluate
+Requires: R-jsonlite
+Requires: R-magrittr
+BuildRequires : R-htmltools
 BuildRequires : R-htmlwidgets
-BuildRequires : R-webshot
+BuildRequires : R-jsonlite
+BuildRequires : R-magrittr
 BuildRequires : buildreq-R
 
 %description
-canvas-toBlob.js
-================
-canvas-toBlob.js implements the standard HTML5 [`canvas.toBlob()`][1] and
-`canvas.toBlobHD()` methods in browsers that do not natively support it. canvas-toBlob.js
-requires `Blob` support to function, which is not present in all browsers. [Blob.js][2]
-is a cross-browser `Blob` implementation that solves this.
+library. It allows an interactive visualization of networks.
 
 %prep
 %setup -q -c -n visNetwork
@@ -33,13 +30,13 @@ is a cross-browser `Blob` implementation that solves this.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1558995788
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562089370
 
 %install
-export SOURCE_DATE_EPOCH=1558995788
+export SOURCE_DATE_EPOCH=1562089370
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -68,7 +65,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
