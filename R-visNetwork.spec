@@ -4,7 +4,7 @@
 #
 Name     : R-visNetwork
 Version  : 2.0.9
-Release  : 30
+Release  : 31
 URL      : https://cran.r-project.org/src/contrib/visNetwork_2.0.9.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/visNetwork_2.0.9.tar.gz
 Summary  : Network Visualization using 'vis.js' Library
@@ -21,30 +21,26 @@ BuildRequires : R-magrittr
 BuildRequires : buildreq-R
 
 %description
-canvas-toBlob.js
-================
-canvas-toBlob.js implements the standard HTML5 [`canvas.toBlob()`][1] and
-`canvas.toBlobHD()` methods in browsers that do not natively support it. canvas-toBlob.js
-requires `Blob` support to function, which is not present in all browsers. [Blob.js][2]
-is a cross-browser `Blob` implementation that solves this.
+library. It allows an interactive visualization of networks.
 
 %prep
 %setup -q -c -n visNetwork
+cd %{_builddir}/visNetwork
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576002681
+export SOURCE_DATE_EPOCH=1589771144
 
 %install
-export SOURCE_DATE_EPOCH=1576002681
+export SOURCE_DATE_EPOCH=1589771144
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
