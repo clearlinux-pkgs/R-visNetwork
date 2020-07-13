@@ -4,7 +4,7 @@
 #
 Name     : R-visNetwork
 Version  : 2.0.9
-Release  : 31
+Release  : 32
 URL      : https://cran.r-project.org/src/contrib/visNetwork_2.0.9.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/visNetwork_2.0.9.tar.gz
 Summary  : Network Visualization using 'vis.js' Library
